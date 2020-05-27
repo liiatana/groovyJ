@@ -4,7 +4,7 @@ import groovy.json.JsonSlurper
 
 def browser='chrome'
 
-def selenoidURL="http://server_IP:8080/status"
+def selenoidURL="http://selenoidURL:8080/status"
 
 def get = new URL(selenoidURL).openConnection();
 

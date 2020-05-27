@@ -2,7 +2,7 @@
 //@Grab(group='commons-net', module='commons-net', version='2.0')
 import org.apache.commons.net.ftp.FTPClient
 
-def server="server_IP"
+def server="ftp_server_IP"
 def user="ftp_user"
 def pass="ftp_user_password"
 
