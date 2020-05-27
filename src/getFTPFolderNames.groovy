@@ -8,7 +8,7 @@ def pass="ftp_user_password"
 
 def ftpClient = new FTPClient()
 ftpClient.connect(server)
-println(ftpClient.replyString)
+//println(ftpClient.replyString)
 ftpClient.login(user,pass)
 ftpClient.enterLocalPassiveMode()
 
