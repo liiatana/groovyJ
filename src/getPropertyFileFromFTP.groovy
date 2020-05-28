@@ -1,4 +1,4 @@
-
+//Jenkins property=ActiveChoiceReferenceReactiveParameter/Bullet Items List
 //@Grab(group='commons-net', module='commons-net', version='2.0')
 import org.apache.commons.net.ftp.FTPClient
 import org.apache.commons.net.ftp.FTPReply
