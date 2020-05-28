@@ -2,7 +2,7 @@
 
 import groovy.json.JsonSlurper
 
-def selenoidURL="http://selenoidURL:8080/status"
+def selenoidURL="http://172.19.90.46:8080/status"
 
 def get = new URL(selenoidURL).openConnection();
 
