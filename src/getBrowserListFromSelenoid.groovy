@@ -1,4 +1,4 @@
-//рабочий - Список браузеров
+//Список браузеров
 
 import groovy.json.JsonSlurper
 

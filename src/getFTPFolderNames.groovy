@@ -1,6 +1,5 @@
 //Jenkins property=ActiveChoiceParameter/SingleSelect
-//@Grab(group='commons-net', module='commons-net', version='2.0')
-
+// Получение списка настроек окружения с FTP сервера ( ENVIROMENT)
 groovy.grape.Grape.grab(group:'commons-net', module:'commons-net', version:'3.6')
 
 import org.apache.commons.net.ftp.FTPClient
@@ -25,9 +24,3 @@ if (ftpClient.login(user,pass)){
     return fileslist.toList().stream().filter{ x->x.directory}.map{ x->x.getName().toString()}.collect().toList()
 }
 else return "Couldn't connect to FTP with "+ user
-
-
-
-
-
-

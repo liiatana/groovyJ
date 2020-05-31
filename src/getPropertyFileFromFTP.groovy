@@ -1,13 +1,13 @@
 //Jenkins property=ActiveChoiceReferenceReactiveParameter/Bullet Items List
-//@Grab(group='commons-net', module='commons-net', version='2.0')
 import org.apache.commons.net.ftp.FTPClient
 import org.apache.commons.net.ftp.FTPReply
 
 def server="172.29.17.219"
 def user="Jenkins"
 def pass="Jenkins1"
-def directory="default" //ENVIROMENT
+def directory=ENVIROMENT  // имя параметра Jenkins, в котором выполняется скрипт getFTPFolderList
 def sourceDirectory="/"+directory
+def tmp_path= System.getenv("JENKINS_HOME")+"/"
 
 
 def ftpClient = new FTPClient()
@@ -29,19 +29,14 @@ if (ftpClient.login(user,pass)){
         ftpClient.changeWorkingDirectory(directory)
         ftpClient.fileType=(FTPClient.BINARY_FILE_TYPE)
 
-        def incomingFile = new File(propertyFile.toString())
+        def incomingFile = new File(tmp_path+propertyFile.toString())
         incomingFile.withOutputStream { ostream ->  ftpClient.retrieveFile(propertyFile.toString(), ostream )}
         def text = incomingFile.getText()
         incomingFile.delete()
         ftpClient.disconnect()
         return text.split("\\r\\n").toList()
+
     }
 
 }
 else return ["Couldn't connect to FTP with "+ user]
-
-
-
-
-
-
