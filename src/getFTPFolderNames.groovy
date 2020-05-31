@@ -1,5 +1,8 @@
 //Jenkins property=ActiveChoiceParameter/SingleSelect
 //@Grab(group='commons-net', module='commons-net', version='2.0')
+
+groovy.grape.Grape.grab(group:'commons-net', module:'commons-net', version:'3.6')
+
 import org.apache.commons.net.ftp.FTPClient
 import org.apache.commons.net.ftp.FTPReply
 
