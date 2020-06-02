@@ -1,3 +1,4 @@
+package scripts
 // Получение списка папок с настройками окружения с FTP сервера
 groovy.grape.Grape.grab(group:'commons-net', module:'commons-net', version:'3.6')
 

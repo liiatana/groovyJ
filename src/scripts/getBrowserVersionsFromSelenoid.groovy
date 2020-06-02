@@ -1,3 +1,4 @@
+package scripts
 //Список версий браузеров
 import groovy.json.JsonSlurper
 

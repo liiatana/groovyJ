@@ -1,3 +1,4 @@
+package scripts
 // Скрипт=Удалить конфигурацию с FTP сервера
 //Jenkins :
 // 1. установить и настроить плагин https://plugins.jenkins.io/groovy/
