@@ -3,23 +3,22 @@ import groovy.json.JsonSlurper
 import org.apache.commons.net.ftp.FTPClient
 import org.apache.commons.net.ftp.FTPReply
 
-def server="172.29.17.219"
-def user="Jenkins"
-def pass="Jenkins1"
+Properties properties = new Properties();
+properties.load(new FileInputStream( System.getenv("JENKINS_HOME")+"/.groovy/"+"ftpConfig.properties"))
+
 def directory=ENVIROMENT // имя параметра Jenkins, в котором выполняется скрипт getFTPFolderList
 def sourceDirectory="/"+directory
 def tmp_path= System.getenv("JENKINS_HOME")+"/"
 
-
 def ftpClient = new FTPClient()
-ftpClient.connect(server)
+ftpClient.connect(properties.getProperty("ftp.Server"),properties.getProperty("ftp.Port").toInteger())
 def reply=ftpClient.getReplyCode()
 
 if (!FTPReply.isPositiveCompletion(reply)) {
     ftpClient.disconnect();
     return ["Connection to FTP failed."]
 }
-if (ftpClient.login(user,pass)){
+if (ftpClient.login(properties.getProperty("ftp.UserName"),properties.getProperty("ftp.UserPwd"))){
     ftpClient.enterLocalPassiveMode()
     def fileslist = ftpClient.listFiles(sourceDirectory)
     def usersFile=fileslist.toList().stream().filter{ x->x.getName().toString().contains("json") }.map{ x->x.getName().toString()}.collect().getAt(0)
